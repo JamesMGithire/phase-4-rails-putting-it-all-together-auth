@@ -6,10 +6,7 @@ class RecipesController < ApplicationController
 
     def create
         user  = User.find(session[:user_id]) 
-        # byebug
         recipe = Recipe.create!(user_id:user.id,title:recipe_params[:title], instructions:recipe_params[:instructions], minutes_to_complete:recipe_params[:minutes_to_complete])
-        # user.recipes << Recipe.new(recipe_params)
-        # recipe = user.recipes.last
         render json: recipe, status: :created
     end
 

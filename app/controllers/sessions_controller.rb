@@ -1,6 +1,4 @@
 class SessionsController < ApplicationController
-#   before_action :authorize
-
     def create
         user = User.find_by(username: params[:username])
         if user&.authenticate(params[:password])
@@ -16,8 +14,4 @@ class SessionsController < ApplicationController
         session.delete :user_id
         render json: {},status: :no_content
     end
-    
-    # private
-    # def authorize
-    # end
 end
